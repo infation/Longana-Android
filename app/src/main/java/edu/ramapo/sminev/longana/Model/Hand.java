@@ -7,6 +7,7 @@ import java.util.Vector;
  */
 
 public class Hand {
+
     private Vector<Tile> hand;
 
     public Hand(){
@@ -18,8 +19,8 @@ public class Hand {
     }
 
     public Tile playTileAt(int index){
-        Tile t = hand.elementAt(index);
-        hand.removeElementAt(index);
+        Tile t = hand.get(index);
+        hand.remove(index);
         return t;
     }
 
@@ -40,6 +41,18 @@ public class Hand {
     }
 
     public Tile getTileAt(int index){
-        return hand.elementAt(index);
+        return hand.get(index);
+    }
+
+    public int size(){
+        return hand.size();
+    }
+
+    public Vector<Tile> getHand(){
+        return hand;
+    }
+
+    public void setHand(Vector<Tile> hand){
+        this.hand = hand;
     }
 }

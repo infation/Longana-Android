@@ -7,10 +7,12 @@ package edu.ramapo.sminev.longana.Model;
 public class Round {
 
     private Player[] players;
-    private Deck deck = new Deck();
+    private Deck deck;
+    private Board board;
 
     public Round(){
         deck = new Deck();
+        board = new Board();
         players = new Player[2];
         players[0] = new Human();
         players[1] = new Computer();
@@ -31,11 +33,23 @@ public class Round {
         }
     }
 
+    public void startRound(){
+        drawHands();
+    }
+
     public Tile getFirstTile(){
         return players[0].getHand().playTileAt(0);
     }
 
-    public Player getPlayer(){
-        return players[0];
+    public Player[] getPlayers(){
+        return players;
+    }
+
+    public Board getBoard(){
+        return board;
+    }
+
+    public void setBoard(Board board){
+        this.board = board;
     }
 }

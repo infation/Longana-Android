@@ -1,23 +1,44 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:padding="100dp"
-    android:orientation="horizontal"
-    android:id = "@+id/board">
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pip1"
-        android:background="@drawable/button_border"
-    />
 
-    <Button
-        android:id="@+id/pip2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_border" />
+    <LinearLayout
+        android:id="@+id/computer_hand"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Computer Hand: "/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/board"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Board: "/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id = "@+id/human_hand"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Human Hand: "/>
+    </LinearLayout>
 
 </LinearLayout>
