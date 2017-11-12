@@ -26,7 +26,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text = "Board: "/>
+            android:text = "Board:  L "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "R"/>
     </LinearLayout>
 
     <LinearLayout

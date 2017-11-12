@@ -9,9 +9,19 @@ public class Round {
     private Player[] players;
     private Deck deck;
     private Board board;
+    private int turn;
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
 
     public Round(){
         deck = new Deck();
+        turn = 0;
         board = new Board();
         players = new Player[2];
         players[0] = new Human();
@@ -35,6 +45,17 @@ public class Round {
 
     public void startRound(){
         drawHands();
+        
+    }
+
+    public void switchTurn(){
+        if (turn == 0)
+        {
+            turn = 1;
+        }
+        else{
+            turn = 0;
+        }
     }
 
     public Tile getFirstTile(){
