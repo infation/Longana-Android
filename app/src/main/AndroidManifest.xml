@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.RoundActivity">
+        </activity>
+        <activity
+            android:name=".View.RoundEndActivity"
+            android:label="@string/title_activity_round_end"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:windowSoftInputMode="stateHidden"
+            android:name=".View.StartingActivity"
+            android:label="@string/title_activity_starting"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

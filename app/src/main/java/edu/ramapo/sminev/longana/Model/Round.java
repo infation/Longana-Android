@@ -20,6 +20,16 @@ public class Round {
     private Board board;
     private int turn;
 
+    public int getTournamentMax() {
+        return tournamentMax;
+    }
+
+    public void setTournamentMax(int tournamentMax) {
+        this.tournamentMax = tournamentMax;
+    }
+
+    private int tournamentMax;
+
     public int getTurn() {
         return turn;
     }

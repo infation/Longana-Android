@@ -22,7 +22,6 @@ import edu.ramapo.sminev.longana.R;
 
 public class RoundActivity extends AppCompatActivity {
 
-    private Intent intent;
     private Vector<Button> humanHandButtons = new Vector<Button>();
     private ListView drawerListView;
     private Vector<String> drawerListViewItems;
@@ -33,33 +32,22 @@ public class RoundActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);;
-        //intent.putExtra("human_score", round.getPlayers()[0].getTournamentScore());
-        //
-        Bundle extras = getIntent().getExtras();
         setContentView(R.layout.activity_round);
         drawerListView = (ListView) findViewById(R.id.left_drawer);
         playButton = findViewById(R.id.play_button);
         playButton.setOnClickListener(playButtonListener);
+        getExtras();
         round.startRound();
-        if(extras != null){
-            System.out.println("GOT THE EXTRAS");
-            round.getPlayers()[0].setTournamentScore(Integer.parseInt(extras.getString("human_score")));
-            round.getPlayers()[1].setTournamentScore(Integer.parseInt(extras.getString("computer_score")));
-        }
-
-
         updateHumanHandView();
         updateComputerHandView();
         updateDrawer();
+    }
 
-        //updateHandView(handTiles, round.getPlayers()[1].getHand(), R.id.computer_hand);
-
-
-        /*Button bt = new Button(this);
-        bt.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        updateTileView(t.getFirstPip(), bt);
-        linearLayout.addView(bt);*/
+    public void getExtras(){
+        Bundle bundle = getIntent().getExtras();
+        round.getPlayers()[1].setTournamentScore(bundle.getInt("comp_tour_score", 0));
+        round.getPlayers()[0].setTournamentScore(bundle.getInt("human_tour_score", 0));
+        round.setTournamentMax(bundle.getInt("tournament_max", 0));
     }
 
     public void makeToast(String s){
@@ -107,14 +95,19 @@ public class RoundActivity extends AppCompatActivity {
         drawerListViewItems.add(s);
         s = "Computer score: " + round.getPlayers()[1].getTournamentScore();
         drawerListViewItems.add(s);
+        s = "Tournament Max score: " + round.getTournamentMax();
+        drawerListViewItems.add(s);
     }
 
-    public void restartActivity(Activity act){
-        intent = new Intent(act, RoundActivity.class);
-        intent.putExtra("human_score", round.getPlayers()[0].getTournamentScore());
-        intent.putExtra("computer_score", round.getPlayers()[1].getTournamentScore());
-        intent.setClass(act, act.getClass());
-        startActivity(intent);
+    public void endActivity(Activity act){
+        Intent endRound = new Intent(RoundActivity.this, RoundEndActivity.class);
+        endRound.putExtra("comp_round_score", round.getPlayers()[1].getRoundScore());
+        endRound.putExtra("human_round_score", round.getPlayers()[0].getRoundScore());
+        endRound.putExtra("comp_tour_score", round.getPlayers()[1].getTournamentScore());
+        endRound.putExtra("human_tour_score", round.getPlayers()[0].getTournamentScore());
+        endRound.putExtra("tournament_max", round.getTournamentMax());
+        startActivity(endRound);
+        finish();
     }
 
     public void updateComputerHandView(){
@@ -185,8 +178,11 @@ public class RoundActivity extends AppCompatActivity {
             }
 
             if(round.getPlayers()[1].getHand().isEmpty()){
-                round.getPlayers()[1].setTournamentScore(round.getPlayers()[0].getHand().sumTiles());
-                restartActivity(RoundActivity.this);
+                int score = round.getPlayers()[0].getHand().sumTiles();
+                int tScore = round.getPlayers()[0].getTournamentScore() + score;
+                round.getPlayers()[1].setRoundScore(score);
+                round.getPlayers()[1].setTournamentScore(tScore);
+                endActivity(RoundActivity.this);
             }
 
             updateAllViews();
@@ -215,8 +211,11 @@ public class RoundActivity extends AppCompatActivity {
                            round.switchTurn();
                         }
                         if(round.getPlayers()[0].getHand().isEmpty()){
-                            round.getPlayers()[0].setTournamentScore(round.getPlayers()[1].getHand().sumTiles());
-                            restartActivity(RoundActivity.this);
+                            int score = round.getPlayers()[1].getHand().sumTiles();
+                            int tScore = round.getPlayers()[1].getTournamentScore() + score;
+                            round.getPlayers()[0].setRoundScore(score);
+                            round.getPlayers()[0].setTournamentScore(tScore);
+                            endActivity(RoundActivity.this);
                         }
 
                         updateAllViews();
