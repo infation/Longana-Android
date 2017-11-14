@@ -69,6 +69,7 @@ public class StartingActivity extends AppCompatActivity {
             endRound.putExtra("comp_tour_score", 0);
             endRound.putExtra("human_tour_score", 0);
             endRound.putExtra("tournament_max", tournamentMaxScore);
+            endRound.putExtra("engine", 6);
             startActivity(endRound);
             finish();
         }

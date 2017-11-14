@@ -4,67 +4,67 @@
         <shape android:shape="rectangle">
             <stroke android:width="6dp" android:color="#000000" />
             <solid  android:color="#FFFFFF" />
-            <size android:height="75dp"
+            <size android:height="80dp"
                 android:width="75dp"/>
         </shape>
     </item>
 
 
     <item
-        android:top="20dp"
-        android:left="20dp"
-        android:right="46dp"
-        android:bottom="46dp">
+        android:top="7dp"
+        android:left="10dp"
+        android:right="55dp"
+        android:bottom="55dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="20dp"
-        android:left="46dp"
-        android:right="20dp"
-        android:bottom="46dp">
+        android:top="7dp"
+        android:left="55dp"
+        android:right="10dp"
+        android:bottom="55dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="35dp"
-        android:left="20dp"
-        android:right="46dp"
-        android:bottom="31dp">
+        android:top="30dp"
+        android:left="10dp"
+        android:right="55dp"
+        android:bottom="30dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="35dp"
-        android:left="46dp"
-        android:right="20dp"
-        android:bottom="31dp">
+        android:top="30dp"
+        android:left="55dp"
+        android:right="10dp"
+        android:bottom="30dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="50dp"
-        android:left="20dp"
-        android:right="46dp"
-        android:bottom="16dp">
+        android:top="55dp"
+        android:left="10dp"
+        android:right="55dp"
+        android:bottom="7dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="50dp"
-        android:left="46dp"
-        android:right="20dp"
-        android:bottom="16dp">
+        android:top="55dp"
+        android:left="55dp"
+        android:right="10dp"
+        android:bottom="7dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>

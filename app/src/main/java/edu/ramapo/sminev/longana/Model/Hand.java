@@ -9,7 +9,6 @@ import java.util.Vector;
 public class Hand {
 
     private Vector<Tile> hand;
-
     public Hand(){
         hand = new Vector<Tile>();
     }
@@ -24,11 +23,13 @@ public class Hand {
         return t;
     }
 
-    public boolean isEmpty(){
-        if(hand.size() == 0)
+    public boolean isEmpty() {
+        if (hand.isEmpty()) {
             return true;
-        else
+        } else {
             return false;
+
+        }
     }
 
     public int sumTiles(){

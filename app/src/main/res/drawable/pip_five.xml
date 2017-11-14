@@ -4,46 +4,46 @@
         <shape android:shape="rectangle">
             <stroke android:width="6dp" android:color="#000000" />
             <solid  android:color="#FFFFFF" />
-            <size android:height="75dp"
+            <size android:height="80dp"
                 android:width="75dp"/>
         </shape>
     </item>
 
     <item
-        android:top="15dp"
-        android:left="15dp"
-        android:right="40dp"
-        android:bottom="40dp">
+        android:top="7dp"
+        android:left="10dp"
+        android:right="55dp"
+        android:bottom="55dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="15dp"
-        android:left="40dp"
-        android:right="15dp"
-        android:bottom="40dp">
+        android:top="7dp"
+        android:left="55dp"
+        android:right="10dp"
+        android:bottom="55dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="40dp"
-        android:left="15dp"
-        android:right="40dp"
-        android:bottom="15dp">
+        android:top="55dp"
+        android:left="10dp"
+        android:right="55dp"
+        android:bottom="7dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
     </item>
 
     <item
-        android:top="40dp"
-        android:left="40dp"
-        android:right="15dp"
-        android:bottom="15dp">
+        android:top="55dp"
+        android:left="55dp"
+        android:right="10dp"
+        android:bottom="7dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>

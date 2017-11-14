@@ -22,7 +22,7 @@ import edu.ramapo.sminev.longana.R;
 public class RoundEndActivity extends AppCompatActivity {
 
     private Button save, next;
-    private int computerRScore, humanRScore, computerTScore, humanTScore, tournamentMaxScore;
+    private int computerRScore, humanRScore, computerTScore, humanTScore, tournamentMaxScore, engine;
     private TextView compRScoreView, humanRScoreView, compTScoreView, humanTScoreView;
 
     @Override
@@ -43,6 +43,7 @@ public class RoundEndActivity extends AppCompatActivity {
         computerTScore = bundle.getInt("comp_tour_score", 0);
         humanTScore = bundle.getInt("human_tour_score", 0);
         tournamentMaxScore = bundle.getInt("tournament_max", 0);
+        engine = bundle.getInt("engine", 6);
         updateScores();
 
         // Upon interacting with UI controls, delay any scheduled hide()
@@ -57,6 +58,7 @@ public class RoundEndActivity extends AppCompatActivity {
             endRound.putExtra("comp_tour_score", computerTScore);
             endRound.putExtra("human_tour_score", humanTScore);
             endRound.putExtra("tournament_max", tournamentMaxScore);
+            endRound.putExtra("engine",engine);
             startActivity(endRound);
             finish();
         }

@@ -5,47 +5,6 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:rowCount="1"
-        android:columnCount="2">
-    </GridLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_border"
-            android:text="Play"
-            android:textSize="10sp"
-            android:id="@+id/play_button"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_border"
-            android:text="Save"
-            android:textSize="10sp"
-            android:id="@+id/save_button"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_border"
-            android:text="Hint"
-            android:textSize="10sp"
-            android:id="@+id/hint_button"/>
-
-
-    </LinearLayout>
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -53,46 +12,104 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="75dp"
+            android:gravity = "center">
+            <LinearLayout
+                android:id="@+id/computer_hand"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "Computer Hand: "/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="75dp"
+            android:gravity = "center">
+            <LinearLayout
+                android:id="@+id/board"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "Board:  L "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "R"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="75dp"
+            android:gravity = "center">
+            <LinearLayout
+                android:id = "@+id/human_hand"
+
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Human Hand: "/>
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <LinearLayout
-            android:id="@+id/computer_hand"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1" >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text = "Computer Hand: "/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/board"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1" >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text = "Board:  L "/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text = "R"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id = "@+id/human_hand"
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
-            <TextView
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Human Hand: "/>
+                android:background="@drawable/button_border"
+                android:text="Play"
+                android:enabled="false"
+                android:textSize="10sp"
+                android:id="@+id/play_button"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border"
+                android:text="Save"
+                android:textSize="10sp"
+                android:id="@+id/save_button"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border"
+                android:text="Hint"
+                android:enabled="false"
+                android:textSize="10sp"
+                android:id="@+id/hint_button"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border"
+                android:text="Draw"
+                android:textSize="10sp"
+                android:id="@+id/draw_button"/>
+
+
         </LinearLayout>
+
 
     </LinearLayout>
 

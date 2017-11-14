@@ -15,7 +15,6 @@ public class Deck {
     public Deck(){
         deck = new Vector<Tile>();
         initializeDeck();
-        printDeck();
     }
 
 
@@ -37,7 +36,6 @@ public class Deck {
         }
         //Shuffle the deck
         shuffle();
-        System.out.println(deck.size());
     }
 
     public void shuffle(){

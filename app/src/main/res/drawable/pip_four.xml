@@ -4,7 +4,7 @@
         <shape android:shape="rectangle">
             <stroke android:width="6dp" android:color="#000000" />
             <solid  android:color="#FFFFFF" />
-            <size android:height="75dp"
+            <size android:height="80dp"
                 android:width="75dp"/>
 
         </shape>
@@ -12,8 +12,8 @@
 
 
     <item
-        android:top="40dp"
-        android:left="40dp"
+        android:top="50dp"
+        android:left="50dp"
         android:right="10dp"
         android:bottom="10dp">
 
@@ -25,8 +25,8 @@
     <item
         android:top="10dp"
         android:left="10dp"
-        android:right="40dp"
-        android:bottom="40dp">
+        android:right="50dp"
+        android:bottom="50dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
@@ -34,18 +34,18 @@
 
     <item
         android:top="10dp"
-        android:left="40dp"
+        android:left="50dp"
         android:right="10dp"
-        android:bottom="40dp">
+        android:bottom="50dp">
         <shape android:shape="oval" >
             <solid android:color="#000000"/>
         </shape>
     </item>
 
     <item
-        android:top="40dp"
+        android:top="50dp"
         android:left="10dp"
-        android:right="40dp"
+        android:right="50dp"
         android:bottom="10dp">
         >
         <shape android:shape="oval">
