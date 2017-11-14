@@ -18,43 +18,37 @@ import edu.ramapo.sminev.longana.R;
 public class ComputerHandView {
 
     private RoundActivity activity;
-    private Vector<TileView> computerHandButtons;
+    private Vector<TileView> computerHandView;
 
     public ComputerHandView(RoundActivity activity) {
         this.activity = activity;
     }
 
-    public Vector<TileView> getView(){ return computerHandButtons;}
+    public Vector<TileView> getView(){ return computerHandView;}
 
     public void updateComputerHandView(Hand hand, boolean isEnabled){
 
-        computerHandButtons = new Vector<TileView>();
+        computerHandView = new Vector<TileView>();
         ViewGroup linearLayout = (ViewGroup) activity.findViewById(R.id.computer_hand);
         linearLayout.removeAllViews();
         TextView tv = new TextView(activity);
         tv.setText("Computer hand: ");
         linearLayout.addView(tv);
-        for(int i = 0; i < hand.size(); i++){
-            Tile t = hand.getTileAt(i);
-            computerHandButtons.addElement(new TileView(activity));
-            computerHandButtons.elementAt(i).updateView(t, i, isEnabled);
+        for(int id = 0; id < hand.size(); id++){
+            Tile t = hand.getTileAt(id);
+            TileView tview = new TileView(activity);
+            tview.updateView(t, id, isEnabled);
 
-            computerHandButtons.elementAt(i).getView().elementAt(0).setOnClickListener(activity.handButtonsHandler);
-            computerHandButtons.elementAt(i).getView().elementAt(1).setOnClickListener(activity.handButtonsHandler);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-            params.setMargins(10, 0, 0, 0);
-            computerHandButtons.elementAt(i).getView().elementAt(0).setLayoutParams(params);
-            params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            params.setMargins(0, 0, 10, 0);
-            computerHandButtons.elementAt(i).getView().elementAt(1).setLayoutParams(params);
-            linearLayout.addView(computerHandButtons.elementAt(i).getView().elementAt(0));
-            linearLayout.addView(computerHandButtons.elementAt(i).getView().elementAt(1));
+
+            params.setMargins(10, 0, 10, 0);
+
+            tview.getView().setLayoutParams(params);
+            linearLayout.addView(tview.getView());
+            computerHandView.addElement(tview);
         }
     }
 }

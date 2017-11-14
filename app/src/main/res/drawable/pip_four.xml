@@ -15,7 +15,7 @@
         android:top="50dp"
         android:left="50dp"
         android:right="10dp"
-        android:bottom="10dp">
+        android:bottom="15dp">
 
         <shape android:shape="oval">
             <solid android:color="#000000" />
@@ -23,7 +23,7 @@
     </item>
 
     <item
-        android:top="10dp"
+        android:top="15dp"
         android:left="10dp"
         android:right="50dp"
         android:bottom="50dp">
@@ -33,7 +33,7 @@
     </item>
 
     <item
-        android:top="10dp"
+        android:top="15dp"
         android:left="50dp"
         android:right="10dp"
         android:bottom="50dp">
@@ -46,7 +46,7 @@
         android:top="50dp"
         android:left="10dp"
         android:right="50dp"
-        android:bottom="10dp">
+        android:bottom="15dp">
         >
         <shape android:shape="oval">
             <solid android:color="#000000" />

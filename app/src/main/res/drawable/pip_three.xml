@@ -4,14 +4,14 @@
         <shape android:shape="rectangle">
             <stroke android:width="6dp" android:color="#000000" />
             <solid  android:color="#FFFFFF" />
-            <size android:height="75dp"
+            <size android:height="80dp"
                 android:width="75dp"/>
         </shape>
     </item>
 
 
     <item
-        android:top="10dp"
+        android:top="15dp"
         android:left="50dp"
         android:right="10dp"
         android:bottom="50dp">
@@ -21,10 +21,10 @@
     </item>
 
     <item
-        android:top="30dp"
-        android:left="30dp"
-        android:right="30dp"
-        android:bottom="30dp">
+        android:top="32dp"
+        android:left="29dp"
+        android:right="31dp"
+        android:bottom="32dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>
@@ -34,7 +34,7 @@
         android:top="50dp"
         android:left="10dp"
         android:right="50dp"
-        android:bottom="10dp">
+        android:bottom="15dp">
         <shape android:shape="oval">
             <solid android:color="#000000" />
         </shape>

@@ -67,13 +67,13 @@ public class Round {
                 if(players[i].getHand().getTileAt(j).getSecondPip() == engine && players[i].getHand().getTileAt(j).getFirstPip() == engine){
                     activity.makeToast("ENGINE IS FOUND.");
                     if(i == 0){
-                        humanView.getView().elementAt(j).getView().elementAt(0).setEnabled(true);
-                        humanView.getView().elementAt(j).getView().elementAt(1).setEnabled(true);
+                        humanView.getView().elementAt(j).getView().setEnabled(true);
+                        humanView.getView().elementAt(j).getView().setEnabled(true);
                         setTurn(0);
                     }
                     else{
-                        computerView.getView().elementAt(j).getView().elementAt(0).setEnabled(true);
-                        computerView.getView().elementAt(j).getView().elementAt(1).setEnabled(true);
+                        computerView.getView().elementAt(j).getView().setEnabled(true);
+                        computerView.getView().elementAt(j).getView().setEnabled(true);
                         setTurn(1);
                     }
                     return j;

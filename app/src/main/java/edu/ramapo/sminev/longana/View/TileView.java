@@ -20,11 +20,11 @@ public class TileView {
     private RoundActivity activity;
     AlertDialog.Builder builder;
 
-    public  Vector<Button> getView() {
+    public  LinearLayout getView() {
         return tile;
     }
 
-    private Vector<Button> tile;
+    private LinearLayout tile;
 
     public TileView(RoundActivity activity) {
         this.activity = activity;
@@ -59,19 +59,31 @@ public class TileView {
         }
     }
 
-    public void updateView(Tile t, int bid, boolean isEnabled){
-        tile = new Vector<Button>();
-        Button pip1= new Button(activity);
-        Button pip2 = new Button(activity);
-        pip1.setId(bid);
-        pip2.setId(bid);
+    public void updateTileView(Tile t, Button pip1, Button pip2, boolean isEnabled){
         updatePipView(t.getFirstPip(), pip1);
         updatePipView(t.getSecondPip(), pip2);
         if(!isEnabled) {
             pip1.setEnabled(isEnabled);
             pip2.setEnabled(isEnabled);
         }
-        tile.add(pip1);
-        tile.add(pip2);
+    }
+
+
+
+    public void updateView(Tile t, int bid, boolean isEnabled){
+        tile = new LinearLayout(activity);
+
+        tile.setId(bid);
+        Button pip1= new Button(activity);
+        Button pip2 = new Button(activity);
+        pip1.setId(bid);
+        pip2.setId(bid);
+
+        pip1.setOnClickListener(activity.handButtonsHandler);
+        pip2.setOnClickListener(activity.handButtonsHandler);
+
+        updateTileView(t, pip1, pip2, isEnabled);
+        tile.addView(pip1);
+        tile.addView(pip2);
     }
 }

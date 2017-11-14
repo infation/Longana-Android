@@ -209,7 +209,7 @@ public class RoundActivity extends AppCompatActivity {
     View.OnClickListener handButtonsHandler = (new View.OnClickListener() {
         public void onClick(View view) {
             for(int i = 0; i < round.getPlayers()[0].getHand().size(); i++){
-                if(humanView.getView().elementAt(i).getView().elementAt(0).getId() == view.getId()) {
+                if(humanView.getView().elementAt(i).getView().getId() == view.getId()) {
                     if (round.getTurn() == 0) {
 
                         round.getPlayers()[0].playTile(round, i, humanView);

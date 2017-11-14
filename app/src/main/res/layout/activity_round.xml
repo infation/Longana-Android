@@ -14,13 +14,12 @@
 
         <HorizontalScrollView
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="75dp"
-            android:gravity = "center">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
             <LinearLayout
                 android:id="@+id/computer_hand"
                 android:layout_width="fill_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
@@ -31,13 +30,13 @@
 
         <HorizontalScrollView
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="75dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
             android:gravity = "center">
             <LinearLayout
                 android:id="@+id/board"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,14 +51,14 @@
 
         <HorizontalScrollView
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:gravity = "center">
             <LinearLayout
                 android:id = "@+id/human_hand"
 
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
@@ -70,6 +69,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
             android:layout_height="match_parent"
             android:gravity="center">
 

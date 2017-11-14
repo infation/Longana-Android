@@ -26,10 +26,10 @@ public class HumanHandView {
     AlertDialog.Builder builder;
 
     public Vector<TileView> getView() {
-        return humanHandButtons;
+        return humanHandView;
     }
 
-    Vector<TileView> humanHandButtons;
+    Vector<TileView> humanHandView;
 
     public HumanHandView(RoundActivity activity) {
         this.activity = activity;
@@ -44,33 +44,30 @@ public class HumanHandView {
     }
 
     public void updateView(Hand hand, boolean isEnabled){
-        humanHandButtons = new Vector<TileView>();
+
+        humanHandView = new Vector<TileView>();
         ViewGroup linearLayout = (ViewGroup) activity.findViewById(R.id.human_hand);
         linearLayout.removeAllViews();
         TextView tv = new TextView(activity);
         tv.setText("Human hand: ");
         linearLayout.addView(tv);
+
         for(int i = 0; i < hand.size(); i++){
             Tile t = hand.getTileAt(i);
-            humanHandButtons.addElement(new TileView(activity));
-            humanHandButtons.elementAt(i).updateView(t, i, isEnabled);
+            TileView tview = new TileView(activity);
+            tview.updateView(t, i, isEnabled);
 
-            humanHandButtons.elementAt(i).getView().elementAt(0).setOnClickListener(activity.handButtonsHandler);
-            humanHandButtons.elementAt(i).getView().elementAt(1).setOnClickListener(activity.handButtonsHandler);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-            params.setMargins(10, 0, 0, 0);
-            humanHandButtons.elementAt(i).getView().elementAt(0).setLayoutParams(params);
-            params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            params.setMargins(0, 0, 10, 0);
-            humanHandButtons.elementAt(i).getView().elementAt(1).setLayoutParams(params);
-            linearLayout.addView(humanHandButtons.elementAt(i).getView().elementAt(0));
-            linearLayout.addView(humanHandButtons.elementAt(i).getView().elementAt(1));
+            params.setMargins(10, 0, 10, 0);
+
+            tview.getView().setLayoutParams(params);
+            linearLayout.addView(tview.getView());
+            humanHandView.addElement(tview);
         }
     }
+
+
 }
