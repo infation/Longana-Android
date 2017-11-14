@@ -24,6 +24,13 @@ public class Hand {
         return t;
     }
 
+    public boolean isEmpty(){
+        if(hand.size() == 0)
+            return true;
+        else
+            return false;
+    }
+
     public int sumTiles(){
         int sum = 0;
         for(int i = 0; i < hand.size(); i++){

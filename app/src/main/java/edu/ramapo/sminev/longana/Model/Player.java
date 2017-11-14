@@ -1,5 +1,7 @@
 package edu.ramapo.sminev.longana.Model;
 
+import edu.ramapo.sminev.longana.View.RoundActivity;
+
 /**
  * Created by sminev on 11/5/17.
  */
@@ -16,6 +18,11 @@ public class Player {
         roundScore = 0;
         tournamentScore = 0;
         isPassed = false;
+    }
+
+
+    public Boolean play(Board board, Deck deck, boolean compPassed, RoundActivity activity , int index){
+        return false;
     }
 
     public Hand getHand() {

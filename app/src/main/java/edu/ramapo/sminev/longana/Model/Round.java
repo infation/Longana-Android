@@ -7,6 +7,15 @@ package edu.ramapo.sminev.longana.Model;
 public class Round {
 
     private Player[] players;
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
+
     private Deck deck;
     private Board board;
     private int turn;
@@ -45,8 +54,10 @@ public class Round {
 
     public void startRound(){
         drawHands();
-        
+
     }
+
+
 
     public void switchTurn(){
         if (turn == 0)

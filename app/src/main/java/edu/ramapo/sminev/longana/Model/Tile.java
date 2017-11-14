@@ -53,6 +53,10 @@ public class Tile {
         System.out.print(" " + pips[0] + "-" + pips[1] +" ");
     }
 
+    public String toString(){
+        return " " + pips[0] + "-" + pips[1] +" ";
+    }
+
     public boolean isDouble() {
         if (pips[0] == pips[1])
             return true;

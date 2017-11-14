@@ -57,6 +57,10 @@ public class Deck {
         }
     }
 
+    public int size(){
+        return deck.size();
+    }
+
     public void printDeck(){
         System.out.print("\n\n\nDeck: ");
         for(int i = 0; i < deck.size(); i++)
