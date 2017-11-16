@@ -23,7 +23,7 @@ public class RoundEndActivity extends AppCompatActivity {
 
     private Button save, next;
     private int computerRScore, humanRScore, computerTScore, humanTScore, tournamentMaxScore, engine;
-    private TextView compRScoreView, humanRScoreView, compTScoreView, humanTScoreView;
+    private TextView compRScoreView, humanRScoreView, compTScoreView, humanTScoreView, winnerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class RoundEndActivity extends AppCompatActivity {
         humanRScoreView = (TextView) findViewById(R.id.human_round_score);
         compTScoreView = (TextView) findViewById(R.id.comp_tour_score);
         humanTScoreView = (TextView) findViewById(R.id.human_tour_score);
+        winnerView = (TextView) findViewById(R.id.winner);
         computerRScore = bundle.getInt("comp_round_score", 0);
         humanRScore = bundle.getInt("human_round_score", 0);
         computerTScore = bundle.getInt("comp_tour_score", 0);
@@ -50,6 +51,27 @@ public class RoundEndActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
 
+    }
+
+    public String decideWinner(){
+        if(computerRScore > humanRScore){
+            return "Computer";
+        }
+        else if (computerRScore < humanRScore){
+            return "Human";
+        }
+        else{
+            return "Draw";
+        }
+    }
+
+    public void checkTournamentEnding(){
+        if(humanTScore >= tournamentMaxScore){
+            winnerView.setText("Tournament Winner: " + decideWinner());
+        }
+        else if(computerTScore >= tournamentMaxScore){
+            winnerView.setText("Tournament Winner: " + decideWinner());
+        }
     }
 
     View.OnClickListener nextButtonListener = (new View.OnClickListener() {
@@ -72,10 +94,13 @@ public class RoundEndActivity extends AppCompatActivity {
     });
 
     public void updateScores(){
+        winnerView.setText("Winner: " + decideWinner());
+        checkTournamentEnding();
         compRScoreView.setText("Computer Round Score: " + computerRScore);
         humanRScoreView.setText("Human Round Score: " + humanRScore);
         compTScoreView.setText("Computer Tournament Score: " + computerTScore);
         humanTScoreView.setText("Human Tournament Score: " + humanTScore);
+
     }
 
 }

@@ -11,7 +11,7 @@
         android:id="@+id/comp_round_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="20sp"
         android:text="Computer Round Score:"
         android:textColor="#000000"
         android:textStyle="bold" />
@@ -20,7 +20,7 @@
         android:id="@+id/human_round_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="20sp"
         android:text="Human Round Score:"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:id="@+id/comp_tour_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="20sp"
         android:text="Computer Tournament Score:"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -40,8 +40,18 @@
         android:id="@+id/human_tour_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="20sp"
         android:text="Human Tournament Score:"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/winner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Winner"
         android:textColor="#000000"
         android:textStyle="bold"
         android:layout_marginTop="20dp"/>
@@ -59,7 +69,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_border"
         android:text="Next Round"
         android:textSize="10sp"
