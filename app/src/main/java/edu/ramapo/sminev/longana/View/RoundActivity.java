@@ -21,28 +21,25 @@ import java.util.Vector;
 import edu.ramapo.sminev.longana.Model.Hand;
 import edu.ramapo.sminev.longana.Model.Round;
 import edu.ramapo.sminev.longana.Model.Tile;
+import edu.ramapo.sminev.longana.Model.Tournament;
 import edu.ramapo.sminev.longana.R;
 
 public class RoundActivity extends AppCompatActivity {
 
-    private Boolean isLeftPlacement = null;
     private boolean isEnginePlaced = false;
     private int playedTileIndex, engineTileIndex;
     private HumanHandView humanView;
     private DeckView deckView;
     private BoardView boardView;
     private ComputerHandView computerView;
-    private ListView drawerListView;
-    private Vector<String> drawerListViewItems;
     private Button playButton, saveButton, drawButton, hintButton;
-    private Vector<TileView> boardButtons = new Vector<TileView>();
+    private Tournament tournament;
     private Round round;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);;
         setContentView(R.layout.activity_round);
-        round = new Round(this);
-        drawerListView = (ListView) findViewById(R.id.left_drawer);
+
         drawButton = findViewById(R.id.draw_button);
         drawButton.setOnClickListener(drawButtonListener);
         playButton = findViewById(R.id.play_button);
@@ -54,8 +51,21 @@ public class RoundActivity extends AppCompatActivity {
         computerView = new ComputerHandView(this);
         deckView = new DeckView(this);
         boardView = new BoardView(this);
-        getExtras();
-        engineTileIndex = round.startRound(humanView, computerView);
+
+        if(getIntent().getExtras().getBoolean("load")){
+            tournament = new Tournament(this);
+            tournament.getParser().loadFile(tournament, "/Download/test.txt");
+            round = tournament.getRound();
+            if(round.getBoard().size()>0){
+                unlockButtons();
+            }
+            updateAllViews(true);
+        }
+        else{
+            round = new Round(this);
+            getExtras();
+            engineTileIndex = round.startRound(humanView, computerView);
+        }
 
     }
 
@@ -97,16 +107,13 @@ public class RoundActivity extends AppCompatActivity {
         computerView.updateComputerHandView(round.getPlayers()[1].getHand(), isEnabled);
         humanView.updateView(round.getPlayers()[0].getHand(), isEnabled);
         deckView.updateView(round);
-        isLeftPlacement = null;
     }
 
     View.OnClickListener playButtonListener = (new View.OnClickListener() {
 
         public void onClick(View view) {
             if(isEnginePlaced) {
-                if (round.getTurn() == 0) {
-                    makeToast("It's your turn");
-                } else {
+                if (round.getTurn() != 0) {
 
                     round.getPlayers()[1].playTile(round, 0, humanView);
 
@@ -118,7 +125,6 @@ public class RoundActivity extends AppCompatActivity {
                 }
             }
             else{
-                makeToast("Engine is found. Press Play to place it.");
                 round.getBoard().addTileToLeft(round.getPlayers()[round.getTurn()].getHand().playTileAt(engineTileIndex));
                 round.switchTurn();
                 isEnginePlaced = true;
@@ -137,7 +143,7 @@ public class RoundActivity extends AppCompatActivity {
                 makeToast("The engine is not found. Press DRAW to draw tiles.");
             }
             else{
-                makeToast("THE ENGINE IS FOUND");
+                makeToast("THE ENGINE IS FOUND. PRESS PLAY TO PLAY IT.");
                 engineTileIndex = result;
                 unlockButtons();
             }

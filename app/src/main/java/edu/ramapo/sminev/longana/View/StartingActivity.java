@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import edu.ramapo.sminev.longana.Model.Tournament;
 import edu.ramapo.sminev.longana.R;
 
 /**
@@ -28,8 +29,8 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_starting);
+
         startButton = (Button) findViewById(R.id.start_button);
         startButton.setOnClickListener(startButtonListener);
         loadButton = (Button) findViewById(R.id.load_button);
@@ -64,6 +65,7 @@ public class StartingActivity extends AppCompatActivity {
     View.OnClickListener startButtonListener = (new View.OnClickListener() {
         public void onClick(View view) {
             Intent endRound = new Intent(StartingActivity.this, RoundActivity.class);
+            endRound.putExtra("load", false);
             endRound.putExtra("comp_round_score", 0);
             endRound.putExtra("human_round_score", 0);
             endRound.putExtra("comp_tour_score", 0);
@@ -78,7 +80,11 @@ public class StartingActivity extends AppCompatActivity {
 
     View.OnClickListener loadButtonListener = (new View.OnClickListener() {
         public void onClick(View view) {
-
+            Intent endRound = new Intent(StartingActivity.this, RoundActivity.class);
+            //tournament.getParser().loadFile(tournament, "/Download/test.txt");
+            endRound.putExtra("load", true);
+            startActivity(endRound);
+            finish();
         }
     });
 }

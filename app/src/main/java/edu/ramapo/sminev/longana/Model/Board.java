@@ -29,6 +29,15 @@ public class Board {
         System.out.println();
     }
 
+    public boolean checkIfEnginePlaced(int engine){
+        for(int i = 0; i< board.size(); i ++){
+            if(engine == board.elementAt(i).getFirstPip() && engine ==board.elementAt(i).getSecondPip()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Tile getTileAt(int index){
         return board.get(index);
     }

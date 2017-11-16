@@ -18,10 +18,9 @@ public class Round {
     private int engine;
     private int tournamentMax;
 
-
     public Round(RoundActivity activity){
         this.activity = activity;
-        deck = new Deck();
+        deck = new Deck(true);
         turn = 0;
         engine = 6;
         board = new Board();
@@ -65,7 +64,6 @@ public class Round {
         for(int i = 0; i < 2; i++){
             for(int j = 0; j < players[i].getHand().size(); j++){
                 if(players[i].getHand().getTileAt(j).getSecondPip() == engine && players[i].getHand().getTileAt(j).getFirstPip() == engine){
-                    activity.makeToast("ENGINE IS FOUND.");
                     if(i == 0){
                         humanView.getView().elementAt(j).getView().setEnabled(true);
                         humanView.getView().elementAt(j).getView().setEnabled(true);
@@ -80,7 +78,6 @@ public class Round {
                 }
             }
         }
-        activity.makeToast("ENGINE NOT FOUND. DRAWING TILES.");
         return -1;
     }
 

@@ -12,9 +12,10 @@ public class Deck {
 
     private Vector<Tile> deck;
 
-    public Deck(){
+    public Deck(boolean shouldInitialize){
         deck = new Vector<Tile>();
-        initializeDeck();
+        if(shouldInitialize)
+            initializeDeck();
     }
 
     public Tile getTileAt(int index){
@@ -56,6 +57,10 @@ public class Deck {
             randIndex1 = rand.nextInt(deck.size());
             randIndex2 = rand.nextInt(deck.size());
         }
+    }
+
+    public void addTile(Tile t){
+        deck.addElement(t);
     }
 
     public int size(){
