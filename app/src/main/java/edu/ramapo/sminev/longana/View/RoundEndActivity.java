@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import edu.ramapo.sminev.longana.Model.Tournament;
 import edu.ramapo.sminev.longana.R;
 
 /**
@@ -66,11 +67,17 @@ public class RoundEndActivity extends AppCompatActivity {
     }
 
     public void checkTournamentEnding(){
+        Intent endRound = new Intent(RoundEndActivity.this, EndTournamentActivity.class);
+        endRound.putExtra("comp_tour_score", computerTScore);
+        endRound.putExtra("human_tour_score", humanTScore);
+        endRound.putExtra("winner", decideWinner());
         if(humanTScore >= tournamentMaxScore){
-            winnerView.setText("Tournament Winner: " + decideWinner());
+            startActivity(endRound);
+            finish();
         }
         else if(computerTScore >= tournamentMaxScore){
-            winnerView.setText("Tournament Winner: " + decideWinner());
+            startActivity(endRound);
+            finish();
         }
     }
 
@@ -81,6 +88,7 @@ public class RoundEndActivity extends AppCompatActivity {
             endRound.putExtra("human_tour_score", humanTScore);
             endRound.putExtra("tournament_max", tournamentMaxScore);
             endRound.putExtra("engine",engine);
+            endRound.putExtra("load", false);
             startActivity(endRound);
             finish();
         }

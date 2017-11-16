@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.ramapo.sminev.longana">
 
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -13,23 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.RoundActivity">
-        </activity>
+        <activity android:name=".View.RoundActivity"></activity>
         <activity
             android:name=".View.RoundEndActivity"
             android:label="@string/title_activity_round_end"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:windowSoftInputMode="stateHidden"
             android:name=".View.StartingActivity"
             android:label="Longana"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/FullscreenTheme"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.EndTournamentActivity"></activity>
     </application>
 
 </manifest>

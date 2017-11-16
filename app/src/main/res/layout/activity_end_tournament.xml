@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="edu.ramapo.sminev.longana.View.EndTournamentActivity">
+
+    <TextView
+        android:id="@+id/comp_tour_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Computer Tournament Score:"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/human_tour_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Human Tournament Score:"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/winner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Winner: "
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:text="Play Again"
+        android:textSize="10sp"
+        android:id="@+id/play_button" />
+</LinearLayout>
