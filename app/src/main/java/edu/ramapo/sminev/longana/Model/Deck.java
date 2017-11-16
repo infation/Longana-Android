@@ -17,6 +17,9 @@ public class Deck {
         initializeDeck();
     }
 
+    public Tile getTileAt(int index){
+        return deck.get(index);
+    }
 
     /* *********************************************************************
     Function Name: initializeDeck

@@ -29,6 +29,7 @@ public class RoundActivity extends AppCompatActivity {
     private boolean isEnginePlaced = false;
     private int playedTileIndex, engineTileIndex;
     private HumanHandView humanView;
+    private DeckView deckView;
     private BoardView boardView;
     private ComputerHandView computerView;
     private ListView drawerListView;
@@ -51,6 +52,7 @@ public class RoundActivity extends AppCompatActivity {
         hintButton.setOnClickListener(hintButtonHandler);
         humanView = new HumanHandView(this);
         computerView = new ComputerHandView(this);
+        deckView = new DeckView(this);
         boardView = new BoardView(this);
         getExtras();
         engineTileIndex = round.startRound(humanView, computerView);
@@ -78,30 +80,6 @@ public class RoundActivity extends AppCompatActivity {
         Toast.makeText(RoundActivity.this, s, Toast.LENGTH_SHORT).show();
     }
 
-    public void updateDrawer(){
-        //Drawer for tiles
-        drawerListViewItems = new Vector<>();
-        String s = "Remaining tiles in the deck: " + round.getDeck().size();
-        drawerListViewItems.add(s);
-        // Set the adapter for the list view
-        drawerListView.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_listview_item, drawerListViewItems));
-        s = "Turn: ";
-        if(round.getTurn() == 0){
-            s = s+"Human";
-        }
-        else{
-            s = s+"Computer";
-        }
-        drawerListViewItems.add(s);
-        s = "Human score: " + round.getPlayers()[0].getTournamentScore();
-        drawerListViewItems.add(s);
-        s = "Computer score: " + round.getPlayers()[1].getTournamentScore();
-        drawerListViewItems.add(s);
-        s = "Tournament Max score: " + round.getTournamentMax();
-        drawerListViewItems.add(s);
-    }
-
     public void endActivity(){
         Intent endRound = new Intent(RoundActivity.this, RoundEndActivity.class);
         endRound.putExtra("comp_round_score", round.getPlayers()[1].getRoundScore());
@@ -114,19 +92,11 @@ public class RoundActivity extends AppCompatActivity {
         finish();
     }
 
-    public void updateTileView(Tile tile, Button b, boolean isEnabled){
-        b.setBackgroundResource(R.drawable.button_border);
-        b.setTextSize(10);
-        b.setEnabled(isEnabled);
-        String s = tile.getFirstPip() + "-" + tile.getSecondPip();
-        b.setText(s);
-    }
-
     public void updateAllViews(boolean isEnabled){
         boardView.updateBoardView(round.getBoard(),isEnabled);
         computerView.updateComputerHandView(round.getPlayers()[1].getHand(), isEnabled);
         humanView.updateView(round.getPlayers()[0].getHand(), isEnabled);
-        updateDrawer();
+        deckView.updateView(round);
         isLeftPlacement = null;
     }
 

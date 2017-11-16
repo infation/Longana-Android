@@ -115,7 +115,7 @@
 
     <ListView android:id="@+id/left_drawer"
     android:layout_width="400dp"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="start"
     android:divider="#000000"
     android:dividerHeight="1dp"
