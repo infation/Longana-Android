@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.Vector;
 
 import edu.ramapo.sminev.longana.Model.Hand;
@@ -45,6 +46,7 @@ public class RoundActivity extends AppCompatActivity {
         playButton = findViewById(R.id.play_button);
         playButton.setOnClickListener(playButtonListener);
         saveButton = findViewById(R.id.save_button);
+        saveButton.setOnClickListener(saveButtonListener);
         hintButton = findViewById(R.id.hint_button);
         hintButton.setOnClickListener(hintButtonHandler);
         humanView = new HumanHandView(this);
@@ -62,7 +64,8 @@ public class RoundActivity extends AppCompatActivity {
             updateAllViews(true);
         }
         else{
-            round = new Round(this);
+            tournament = new Tournament(this);
+            round = tournament.getRound();
             getExtras();
             engineTileIndex = round.startRound(humanView, computerView);
         }
@@ -83,6 +86,7 @@ public class RoundActivity extends AppCompatActivity {
         tournament.setComputerTourScore(bundle.getInt("comp_tour_score", 0));
         tournament.setHumanTourScore(bundle.getInt("human_tour_score", 0));
         tournament.setMaxTourScore(bundle.getInt("tournament_max", 0));
+        tournament.setRoundNum(bundle.getInt("round_num", tournament.getRoundNum()));
         round.setEngine(bundle.getInt("engine", 6));
     }
 
@@ -97,6 +101,7 @@ public class RoundActivity extends AppCompatActivity {
         endRound.putExtra("comp_tour_score", tournament.getComputerTourScore());
         endRound.putExtra("human_tour_score", tournament.getHumanTourScore());
         endRound.putExtra("tournament_max", tournament.getMaxTourScore());
+        endRound.putExtra("round_num", tournament.getRoundNum());
         endRound.putExtra("engine" , round.getEngine());
         startActivity(endRound);
         finish();
@@ -132,6 +137,19 @@ public class RoundActivity extends AppCompatActivity {
             }
         }
     });
+
+    View.OnClickListener saveButtonListener = (new View.OnClickListener() {
+
+        public void onClick(View view) {
+            try {
+                tournament.getParser().saveFile(tournament);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            finish();
+        }
+    });
+
 
     View.OnClickListener drawButtonListener = (new View.OnClickListener() {
 

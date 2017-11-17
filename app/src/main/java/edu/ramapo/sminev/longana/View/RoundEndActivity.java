@@ -23,7 +23,7 @@ import edu.ramapo.sminev.longana.R;
 public class RoundEndActivity extends AppCompatActivity {
 
     private Button save, next;
-    private int computerRScore, humanRScore, computerTScore, humanTScore, tournamentMaxScore, engine;
+    private int computerRScore, humanRScore, computerTScore, humanTScore, tournamentMaxScore, engine, roundNum;
     private TextView compRScoreView, humanRScoreView, compTScoreView, humanTScoreView, winnerView;
 
     @Override
@@ -45,6 +45,7 @@ public class RoundEndActivity extends AppCompatActivity {
         computerTScore = bundle.getInt("comp_tour_score", 0);
         humanTScore = bundle.getInt("human_tour_score", 0);
         tournamentMaxScore = bundle.getInt("tournament_max", 0);
+        roundNum = bundle.getInt("round_num", 1);
         engine = bundle.getInt("engine", 6);
         updateScores();
 
@@ -87,6 +88,7 @@ public class RoundEndActivity extends AppCompatActivity {
             endRound.putExtra("comp_tour_score", computerTScore);
             endRound.putExtra("human_tour_score", humanTScore);
             endRound.putExtra("tournament_max", tournamentMaxScore);
+            endRound.putExtra("round_num", roundNum+1);
             endRound.putExtra("engine",engine);
             endRound.putExtra("load", false);
             startActivity(endRound);

@@ -3,9 +3,11 @@ package edu.ramapo.sminev.longana.Model;
 import android.os.Environment;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -116,7 +118,7 @@ Assistaince Received: none;
         System.out.println(player.getTournamentScore());
         //Get the score of the player
         //String score = br.readLine();
-    }
+   }
 
     public void loadFile(Tournament tournament, String whichFile) {
         tournament.getRound().setDeck(new Deck(false));
@@ -145,9 +147,9 @@ Assistaince Received: none;
                                 break;
                             case 'R':
                                 String roundNum = line.substring(line.indexOf(':') + 2);
+                                tournament.setRoundNum(Integer.parseInt(roundNum));
                                 tournament.getRound().setEngine(7 - (Integer.parseInt(roundNum)%7));
                                 System.out.println(tournament.getRound().getEngine());
-                                //std::cout<<engine<<"\n";
                                 break;
                             case 'C':
                                 loadPlayer(tournament.getRound().getPlayers()[1], br);
@@ -197,8 +199,72 @@ Assistaince Received: none;
         }
     }
 
-    public void saveFile(Tournament tournament) {
+    public void savePlayer(Player player, BufferedWriter bw) throws IOException {
+       bw.write("   Hand:");
+       for(int i = 0; i < player.getHand().size(); i++){
+           bw.write(player.getHand().getTileAt(i).toString());
+       }
+       bw.write("\n   Score: "+player.getTournamentScore()+"\n\n");
+    }
 
+    public void saveBoard(Board board, BufferedWriter bw) throws IOException {
+        bw.write("  L");
+        for(int i = 0; i < board.size(); i++){
+            bw.write(board.getTileAt(i).toString());
+        }
+        bw.write(" R\n\n");
+   }
 
+   public void saveDeck(Deck deck, BufferedWriter bw) throws IOException {
+        for(int i = 0; i < deck.size(); i++){
+            bw.write(deck.getTileAt(i).toString());
+        }
+        bw.write("\n\n");
+    }
+
+    public void saveFile(Tournament tournament) throws IOException {
+        String fileName="SGame.txt";
+        String filePath=Environment.getExternalStorageDirectory().toString();
+        File file = new File(filePath, fileName);
+        if(file.exists()) file.delete();
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            bw.write("Tournament Score: ");
+            bw.write(tournament.getMaxTourScore()+"\n\n");
+            bw.write("Round Num.: ");
+            bw.write(tournament.getRoundNum()+"\n\n");
+            bw.write("Computer:\n");
+            savePlayer(tournament.getRound().getPlayers()[1], bw);
+            bw.write("Human:\n");
+            savePlayer(tournament.getRound().getPlayers()[0], bw);
+            bw.write("Layout: \n");
+            saveBoard(tournament.getRound().getBoard(), bw);
+            bw.write("Boneyard: \n");
+            saveDeck(tournament.getRound().getDeck(), bw);
+            boolean isPassed;
+            String turn;
+            if(tournament.getRound().getBoard().size()== 0){
+                bw.write("Previous Player Passed: \n");
+                bw.write("Next Player: \n");
+            }
+            else {
+                if (tournament.getRound().getTurn() == 0) {
+                    isPassed = tournament.getRound().getPlayers()[1].isPassed();
+                    turn = "Human";
+                } else {
+                    isPassed = tournament.getRound().getPlayers()[0].isPassed();
+                    turn = "Computer";
+                }
+                if (isPassed) {
+                    bw.write("Previous Player Passed: " + "Yes\n\n");
+                } else {
+                    bw.write("Previous Player Passed: " + "No\n\n");
+                }
+                bw.write("Next Player: " + turn);
+            }
+            bw.close();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
 }

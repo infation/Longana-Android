@@ -13,6 +13,7 @@ public class Tournament {
     private int computerTourScore;
     private int maxTourScore;
     private Parser parser;
+    private int roundNum;
 
     public Tournament(RoundActivity activity){
         round = new Round(activity);
@@ -20,8 +21,17 @@ public class Tournament {
         computerTourScore = 0;
         maxTourScore = 0;
         parser = new Parser();
+        roundNum = 1;
     }
 
+
+    public int getRoundNum() {
+        return roundNum;
+    }
+
+    public void setRoundNum(int roundNum) {
+        this.roundNum = roundNum;
+    }
 
     public Round getRound() {
         return round;
