@@ -62,6 +62,8 @@ public class RoundActivity extends AppCompatActivity {
             updateAllViews(true);
             if(round.getBoard().size()>0){
                 unlockButtons();
+                isEnginePlaced = true;
+                hintButton.setEnabled(true);
             }
             else if(round.checkForEngine(humanView, computerView)!=-1){
                 unlockButtons();
@@ -89,8 +91,8 @@ public class RoundActivity extends AppCompatActivity {
 
     public void getExtras(){
         Bundle bundle = getIntent().getExtras();
-        tournament.setComputerTourScore(bundle.getInt("comp_tour_score", 0));
-        tournament.setHumanTourScore(bundle.getInt("human_tour_score", 0));
+        round.getPlayers()[1].setTournamentScore(bundle.getInt("comp_tour_score", 0));
+        round.getPlayers()[0].setTournamentScore(bundle.getInt("human_tour_score", 0));
         tournament.setMaxTourScore(bundle.getInt("tournament_max", 0));
         tournament.setRoundNum(bundle.getInt("round_num", tournament.getRoundNum()));
         round.setEngine(bundle.getInt("engine", 6));
