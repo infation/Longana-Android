@@ -113,7 +113,7 @@ public class RoundActivity extends AppCompatActivity {
 
         public void onClick(View view) {
             if(isEnginePlaced) {
-                if (round.getTurn() != 0) {
+                if (round.getTurn() == 1) {
 
                     round.getPlayers()[1].playTile(round, 0, humanView);
 

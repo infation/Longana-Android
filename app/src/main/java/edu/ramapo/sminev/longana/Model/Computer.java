@@ -67,6 +67,7 @@ public class Computer extends Player {
                     if (getHand().getTileAt(i).sum() > maxSum) {
                         index = i;
                         maxSum = getHand().getTileAt(i).sum();
+                        position = false;
                     }
                 }
 
@@ -83,6 +84,7 @@ public class Computer extends Player {
                     if (getHand().getTileAt(i).sum() > maxSum) {
                         index = i;
                         maxSum = getHand().getTileAt(i).sum();
+                        position = false;
                     }
                 }
             }
