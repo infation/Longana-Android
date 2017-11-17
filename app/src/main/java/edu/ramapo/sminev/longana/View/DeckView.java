@@ -29,12 +29,12 @@ public class DeckView {
 
     public Vector<String> getView(){ return tileViews;}
 
-    public void updateView(Round round) {
+    public void updateView(Round round, int tournamentMax) {
 
         tileViews = new Vector<String>();
         AdapterView linearLayout = (AdapterView) activity.findViewById(R.id.left_drawer);
 
-        updateDrawer(round);
+        updateDrawer(round, tournamentMax);
 
         String s = "Remaining deck: ";
         tileViews.add(s);
@@ -54,7 +54,7 @@ public class DeckView {
     }
 
 
-    public void updateDrawer(Round round){
+    public void updateDrawer(Round round, int tournamentMax){
 
         //Drawer for tiles
         tileViews = new Vector<>();
@@ -74,7 +74,9 @@ public class DeckView {
         tileViews.add(s);
         s = "Computer score: " + round.getPlayers()[1].getTournamentScore();
         tileViews.add(s);
-        s = "Tournament Max score: " + round.getTournamentMax();
+        s = "Tournament Max score: " + tournamentMax;
+        tileViews.add(s);
+        s = "Engine: " + round.getEngine();
         tileViews.add(s);
     }
 }

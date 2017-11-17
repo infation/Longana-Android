@@ -80,9 +80,9 @@ public class RoundActivity extends AppCompatActivity {
 
     public void getExtras(){
         Bundle bundle = getIntent().getExtras();
-        round.getPlayers()[1].setTournamentScore(bundle.getInt("comp_tour_score", 0));
-        round.getPlayers()[0].setTournamentScore(bundle.getInt("human_tour_score", 0));
-        round.setTournamentMax(bundle.getInt("tournament_max", 0));
+        tournament.setComputerTourScore(bundle.getInt("comp_tour_score", 0));
+        tournament.setHumanTourScore(bundle.getInt("human_tour_score", 0));
+        tournament.setMaxTourScore(bundle.getInt("tournament_max", 0));
         round.setEngine(bundle.getInt("engine", 6));
     }
 
@@ -94,9 +94,9 @@ public class RoundActivity extends AppCompatActivity {
         Intent endRound = new Intent(RoundActivity.this, RoundEndActivity.class);
         endRound.putExtra("comp_round_score", round.getPlayers()[1].getRoundScore());
         endRound.putExtra("human_round_score", round.getPlayers()[0].getRoundScore());
-        endRound.putExtra("comp_tour_score", round.getPlayers()[1].getTournamentScore());
-        endRound.putExtra("human_tour_score", round.getPlayers()[0].getTournamentScore());
-        endRound.putExtra("tournament_max", round.getTournamentMax());
+        endRound.putExtra("comp_tour_score", tournament.getComputerTourScore());
+        endRound.putExtra("human_tour_score", tournament.getHumanTourScore());
+        endRound.putExtra("tournament_max", tournament.getMaxTourScore());
         endRound.putExtra("engine" , round.getEngine());
         startActivity(endRound);
         finish();
@@ -106,7 +106,7 @@ public class RoundActivity extends AppCompatActivity {
         boardView.updateBoardView(round.getBoard(),isEnabled);
         computerView.updateComputerHandView(round.getPlayers()[1].getHand(), isEnabled);
         humanView.updateView(round.getPlayers()[0].getHand(), isEnabled);
-        deckView.updateView(round);
+        deckView.updateView(round, tournament.getMaxTourScore());
     }
 
     View.OnClickListener playButtonListener = (new View.OnClickListener() {

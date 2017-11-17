@@ -142,7 +142,6 @@ Assistaince Received: none;
                             case 'T':
                                 String score = line.substring(line.indexOf(':') + 2);
                                 tournament.setMaxTourScore(Integer.parseInt(score));
-                                System.out.println(tournament.getMaxTourScore());
                                 break;
                             case 'R':
                                 String roundNum = line.substring(line.indexOf(':') + 2);

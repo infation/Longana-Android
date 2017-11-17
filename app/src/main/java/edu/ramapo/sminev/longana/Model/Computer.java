@@ -31,7 +31,7 @@ public class Computer extends Player {
                 return drawTileAndTry(round);
             }
         }
-        round.getBoard().checkAvailableMoves(false, getHand(), humanPassed);
+        //round.getBoard().checkAvailableMoves(false, getHand(), humanPassed);
         return true;
     }
 
@@ -70,8 +70,7 @@ public class Computer extends Player {
                         position = false;
                     }
                 }
-
-                if (round.getBoard().checkRulesForPlacement(true, getHand().getTileAt(i))) {
+                else if (round.getBoard().checkRulesForPlacement(true, getHand().getTileAt(i))) {
                     if (getHand().getTileAt(i).sum() > maxSum) {
                         index = i;
                         maxSum = getHand().getTileAt(i).sum();
