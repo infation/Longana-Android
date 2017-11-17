@@ -33,6 +33,8 @@ public class ComputerHandView {
         linearLayout.removeAllViews();
         TextView tv = new TextView(activity);
         tv.setText("Computer hand: ");
+        tv.setTextSize(20);
+        tv.setAllCaps(true);
         linearLayout.addView(tv);
         for(int id = 0; id < hand.size(); id++){
             Tile t = hand.getTileAt(id);

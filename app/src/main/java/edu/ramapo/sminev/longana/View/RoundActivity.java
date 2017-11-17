@@ -56,7 +56,7 @@ public class RoundActivity extends AppCompatActivity {
 
         if(getIntent().getExtras().getBoolean("load")){
             tournament = new Tournament(this);
-            tournament.getParser().loadFile(tournament, "/Download/test.txt");
+            tournament.getParser().loadFile(tournament, getIntent().getExtras().getString("whichFile"));
             round = tournament.getRound();
             if(round.getBoard().size()>0){
                 unlockButtons();

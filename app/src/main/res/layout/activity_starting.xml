@@ -16,6 +16,18 @@
         android:textStyle="bold"
         android:textColor="#000000"/>
 
+
+    <Spinner
+        android:textStyle="bold"
+        android:background="#FFFFFF"
+        android:src="@drawable/button_border"
+        android:id="@+id/files_spinner"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/files_array">
+    </Spinner>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,6 +35,7 @@
         android:layout_marginTop="20dp"
         android:text = "Load Game"
         android:textSize="10sp"
+        android:visibility="invisible"
         android:id="@+id/load_button" />
 
     <TextView

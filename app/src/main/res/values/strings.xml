@@ -6,4 +6,11 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="title_activity_starting">StartingActivity</string>
+    <string-array name="files_array">
+        <item>Select file</item>
+        <item>Case1.txt</item>
+        <item>Case2.txt</item>
+        <item>Case3.txt</item>
+        <item>Case4.txt</item>
+    </string-array>
 </resources>

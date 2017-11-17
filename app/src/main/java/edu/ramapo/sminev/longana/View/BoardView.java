@@ -35,6 +35,8 @@ public class BoardView {
 
         TextView tv = new TextView(activity);
         tv.setText("Board:  L  ");
+        tv.setTextSize(20);
+        tv.setAllCaps(true);
         linearLayout.addView(tv);
 
         for(int i = 0; i < board.size(); i++){
@@ -58,6 +60,8 @@ public class BoardView {
 
         tv = new TextView(activity);
         tv.setText("  R");
+        tv.setTextSize(20);
+        tv.setAllCaps(true);
         linearLayout.addView(tv);
     }
 }

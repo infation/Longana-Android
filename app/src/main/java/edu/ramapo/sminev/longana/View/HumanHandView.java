@@ -50,6 +50,8 @@ public class HumanHandView {
         linearLayout.removeAllViews();
         TextView tv = new TextView(activity);
         tv.setText("Human hand: ");
+        tv.setTextSize(20);
+        tv.setAllCaps(true);
         linearLayout.addView(tv);
 
         for(int i = 0; i < hand.size(); i++){
