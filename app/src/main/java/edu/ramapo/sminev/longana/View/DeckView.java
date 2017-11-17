@@ -36,7 +36,7 @@ public class DeckView {
 
         updateDrawer(round, tournamentMax);
 
-        String s = "Remaining deck: ";
+        String s = "Remaining tiles in the deck: ";
         tileViews.add(s);
 
         for(int i = 0; i < round.getDeck().size(); i++){
@@ -58,25 +58,36 @@ public class DeckView {
 
         //Drawer for tiles
         tileViews = new Vector<>();
-        String s = "Remaining tiles in the deck: " + round.getDeck().size();
-        tileViews.add(s);
+        String s;
         // Set the adapter for the list view
-
+        boolean previousPassed;
         s = "Turn: ";
         if(round.getTurn() == 0){
             s = s+"Human";
+            previousPassed = round.getPlayers()[1].isPassed();
         }
         else{
             s = s+"Computer";
+            previousPassed = round.getPlayers()[0].isPassed();
         }
         tileViews.add(s);
-        s = "Human score: " + round.getPlayers()[0].getTournamentScore();
+        s = "Previous player passed: ";
+        if(previousPassed){
+            s += "Yes";
+        }
+        else{
+            s+="No";
+        }
         tileViews.add(s);
-        s = "Computer score: " + round.getPlayers()[1].getTournamentScore();
+        s = "Human tournament score: " + round.getPlayers()[0].getTournamentScore();
+        tileViews.add(s);
+        s = "Computer tournament score: " + round.getPlayers()[1].getTournamentScore();
         tileViews.add(s);
         s = "Tournament Max score: " + tournamentMax;
         tileViews.add(s);
         s = "Engine: " + round.getEngine();
+        tileViews.add(s);
+        s = "Size of the deck: " + round.getDeck().size();
         tileViews.add(s);
     }
 }
