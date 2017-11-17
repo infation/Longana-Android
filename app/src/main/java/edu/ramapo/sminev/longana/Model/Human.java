@@ -26,10 +26,12 @@ public class Human extends Player {
 
     public boolean playTile(Round round, int index, HumanHandView view){
         if(checkIfCanPlay(round)) {
-            if(getHand().getTileAt(index).isDouble() || round.getPlayers()[1].isPassed()){
+            if((getHand().getTileAt(index).isDouble() || round.getPlayers()[1].isPassed())&&
+                    (round.getBoard().checkRulesForPlacement(true, getHand().getTileAt(index))||
+                            round.getBoard().checkRulesForPlacement(false, getHand().getTileAt(index)))){
                 //Third argument is hardcoded
                 view.askToChooseSide();
-                return false;
+                return true;
             }
             else{
                 if(playNormalTile(round, index)) return true;
@@ -93,7 +95,7 @@ public class Human extends Player {
             round.switchTurn();
             return true;
         }
-        String s = "Invalid move !!!!!!!!";
+        String s = "Invalid move !";
         activity.makeToast(s);
         return false;
     }

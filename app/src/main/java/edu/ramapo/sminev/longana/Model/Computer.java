@@ -91,12 +91,12 @@ public class Computer extends Player {
 
         if(position){
             round.getBoard().addTileToLeft(getHand().playTileAt(index));
-            String s = "The computer played " + round.getBoard().getTileAt(0).toString() + "on the left";
+            String s = "The computer played " + round.getBoard().getTileAt(0).toString() + "on the left, because that was the highest tile in it's hand";
             activity.makeToast(s);
         }
         else{
             round.getBoard().addTileToRight(getHand().playTileAt(index));
-            String s = "The computer played " + round.getBoard().getTileAt(round.getBoard().size()-1).toString() + "on the right";
+            String s = "The computer played " + round.getBoard().getTileAt(round.getBoard().size()-1).toString() + "on the right, because that was the highest tile in it's hand";
             activity.makeToast(s);
         }
 

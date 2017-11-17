@@ -29,6 +29,7 @@ public class RoundActivity extends AppCompatActivity {
 
     private boolean isEnginePlaced = false;
     private int playedTileIndex, engineTileIndex;
+    private TextView turnView;
     private HumanHandView humanView;
     private DeckView deckView;
     private BoardView boardView;
@@ -40,7 +41,7 @@ public class RoundActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);;
         setContentView(R.layout.activity_round);
-
+        turnView = findViewById(R.id.turn);
         drawButton = findViewById(R.id.draw_button);
         drawButton.setOnClickListener(drawButtonListener);
         playButton = findViewById(R.id.play_button);
@@ -58,10 +59,14 @@ public class RoundActivity extends AppCompatActivity {
             tournament = new Tournament(this);
             tournament.getParser().loadFile(tournament, getIntent().getExtras().getString("whichFile"));
             round = tournament.getRound();
+            updateAllViews(true);
             if(round.getBoard().size()>0){
                 unlockButtons();
             }
-            updateAllViews(true);
+            else if(round.checkForEngine(humanView, computerView)!=-1){
+                unlockButtons();
+            }
+
         }
         else{
             tournament = new Tournament(this);
@@ -73,8 +78,9 @@ public class RoundActivity extends AppCompatActivity {
     }
 
     public void unlockButtons(){
+
         saveButton.setEnabled(true);
-        hintButton.setEnabled(true);
+        //hintButton.setEnabled(true);
         playButton.setEnabled(true);
         drawButton.setVisibility(View.INVISIBLE);
         drawButton.setClickable(false);
@@ -98,8 +104,8 @@ public class RoundActivity extends AppCompatActivity {
         Intent endRound = new Intent(RoundActivity.this, RoundEndActivity.class);
         endRound.putExtra("comp_round_score", round.getPlayers()[1].getRoundScore());
         endRound.putExtra("human_round_score", round.getPlayers()[0].getRoundScore());
-        endRound.putExtra("comp_tour_score", tournament.getComputerTourScore());
-        endRound.putExtra("human_tour_score", tournament.getHumanTourScore());
+        endRound.putExtra("comp_tour_score", round.getPlayers()[1].getTournamentScore());
+        endRound.putExtra("human_tour_score", round.getPlayers()[0].getTournamentScore());
         endRound.putExtra("tournament_max", tournament.getMaxTourScore());
         endRound.putExtra("round_num", tournament.getRoundNum());
         endRound.putExtra("engine" , round.getEngine());
@@ -112,6 +118,15 @@ public class RoundActivity extends AppCompatActivity {
         computerView.updateComputerHandView(round.getPlayers()[1].getHand(), isEnabled);
         humanView.updateView(round.getPlayers()[0].getHand(), isEnabled);
         deckView.updateView(round, tournament.getMaxTourScore());
+        turnView.setTextSize(20);
+        turnView.setAllCaps(true);
+        if(round.getTurn() == 0){
+            turnView.setText("Turn: Human");
+        }
+        else{
+            turnView.setText("Turn: Computer");
+        }
+
     }
 
     View.OnClickListener playButtonListener = (new View.OnClickListener() {
@@ -130,6 +145,7 @@ public class RoundActivity extends AppCompatActivity {
                 }
             }
             else{
+                hintButton.setEnabled(true);
                 round.getBoard().addTileToLeft(round.getPlayers()[round.getTurn()].getHand().playTileAt(engineTileIndex));
                 round.switchTurn();
                 isEnginePlaced = true;
